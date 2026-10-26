@@ -14,6 +14,11 @@ import {
     FileText
 } from 'lucide-react';
 
+import {
+    BookOpen
+} from 'lucide-react';
+import BookTracker from './apps/BookTracker';
+
 // ==========================================
 // 1. DUMMY APP COMPONENTS (Your future apps go here)
 // ==========================================
@@ -150,6 +155,13 @@ const AppsGridView = ({ setActiveView }) => (
                 colorClass="from-emerald-500 to-teal-500"
                 onClick={() => setActiveView('app-markdown')}
             />
+            <AppCard
+                title="Reading Tracker"
+                description="Log reading sessions and track book progress."
+                icon={BookOpen}
+                colorClass="from-indigo-500 to-emerald-500"
+                onClick={() => setActiveView('app-booktracker')}
+            />
 
             {/* Add New App Placeholder Card */}
             <div
@@ -203,6 +215,8 @@ export default function App() {
                 return <AppsGridView setActiveView={navigateTo} />;
 
             // --- APP ROUTES GO HERE ---
+            case 'app-booktracker':
+                return <BookTracker />;
             case 'app-pomodoro':
                 return <PomodoroAppPlaceholder />;
             case 'app-weather':
