@@ -15,9 +15,15 @@ import {
 } from 'lucide-react';
 
 import {
-    BookOpen
+    BookOpen,
+    Dumbbell,
+    Hammer,
+    ShoppingCart
 } from 'lucide-react';
 import BookTracker from './apps/BookTracker';
+import WorkoutLogger from './apps/WorkoutLogger';
+import KanbanBoard from './apps/KanbanBoard';
+import ShoppingList from './apps/ShoppingList';
 
 // ==========================================
 // 1. DUMMY APP COMPONENTS (Your future apps go here)
@@ -102,18 +108,25 @@ const HomeView = ({ setActiveView }) => (
             <h2 className="text-xl font-semibold text-white mb-4">Featured Apps</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <AppCard
-                    title="Pomodoro Timer"
-                    description="A productivity timer featuring custom intervals and a sleek UI."
-                    icon={Clock}
-                    colorClass="from-indigo-500 to-purple-500"
-                    onClick={() => setActiveView('app-pomodoro')}
+                    title="Reading Tracker"
+                    description="Log reading sessions, track page progress, and save reflections."
+                    icon={BookOpen}
+                    colorClass="from-indigo-500 to-emerald-500"
+                    onClick={() => setActiveView('app-booktracker')}
                 />
                 <AppCard
-                    title="Weather Dash"
-                    description="Real-time weather data visualization using open APIs."
-                    icon={CloudSun}
-                    colorClass="from-cyan-500 to-blue-500"
-                    onClick={() => setActiveView('app-weather')} // Placeholder routing
+                    title="Workout Logger"
+                    description="Track gym sessions, exercise sets, reps, and weights over time."
+                    icon={Dumbbell}
+                    colorClass="from-orange-500 to-red-500"
+                    onClick={() => setActiveView('app-workout')}
+                />
+                <AppCard
+                    title="DIY Home Kanban"
+                    description="Organize your home improvement tasks with drag & drop columns."
+                    icon={Hammer}
+                    colorClass="from-amber-500 to-yellow-500"
+                    onClick={() => setActiveView('app-kanban')}
                 />
             </div>
         </div>
@@ -135,6 +148,34 @@ const AppsGridView = ({ setActiveView }) => (
     */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <AppCard
+                title="Reading Tracker"
+                description="Log reading sessions and track book progress with Supabase."
+                icon={BookOpen}
+                colorClass="from-indigo-500 to-emerald-500"
+                onClick={() => setActiveView('app-booktracker')}
+            />
+            <AppCard
+                title="Workout Logger"
+                description="Track exercises, sets, reps, and weights for each workout."
+                icon={Dumbbell}
+                colorClass="from-orange-500 to-red-500"
+                onClick={() => setActiveView('app-workout')}
+            />
+            <AppCard
+                title="DIY Home Kanban"
+                description="Manage home tasks with drag & drop stages and priority flags."
+                icon={Hammer}
+                colorClass="from-amber-500 to-yellow-500"
+                onClick={() => setActiveView('app-kanban')}
+            />
+            <AppCard
+                title="Smart Shopping List"
+                description="Save recipes and auto-generate ingredients for shopping trips."
+                icon={ShoppingCart}
+                colorClass="from-emerald-500 to-teal-500"
+                onClick={() => setActiveView('app-shopping')}
+            />
+            <AppCard
                 title="Pomodoro Timer"
                 description="A sleek productivity tool."
                 icon={Clock}
@@ -152,15 +193,8 @@ const AppsGridView = ({ setActiveView }) => (
                 title="MD Editor"
                 description="In-browser markdown previewer."
                 icon={FileText}
-                colorClass="from-emerald-500 to-teal-500"
+                colorClass="from-slate-500 to-slate-400"
                 onClick={() => setActiveView('app-markdown')}
-            />
-            <AppCard
-                title="Reading Tracker"
-                description="Log reading sessions and track book progress."
-                icon={BookOpen}
-                colorClass="from-indigo-500 to-emerald-500"
-                onClick={() => setActiveView('app-booktracker')}
             />
 
             {/* Add New App Placeholder Card */}
@@ -217,6 +251,12 @@ export default function App() {
             // --- APP ROUTES GO HERE ---
             case 'app-booktracker':
                 return <BookTracker />;
+            case 'app-workout':
+                return <WorkoutLogger />;
+            case 'app-kanban':
+                return <KanbanBoard />;
+            case 'app-shopping':
+                return <ShoppingList />;
             case 'app-pomodoro':
                 return <PomodoroAppPlaceholder />;
             case 'app-weather':
@@ -293,6 +333,9 @@ export default function App() {
                     {/* Quick links to apps in sidebar */}
                     {[
                         { label: 'Reading Tracker', id: 'booktracker' },
+                        { label: 'Workout Logger', id: 'workout' },
+                        { label: 'DIY Kanban', id: 'kanban' },
+                        { label: 'Shopping List', id: 'shopping' },
                         { label: 'Pomodoro', id: 'pomodoro' },
                         { label: 'Weather', id: 'weather' },
                         { label: 'Markdown', id: 'markdown' },
