@@ -291,20 +291,25 @@ export default function App() {
                         My Apps
                     </div>
                     {/* Quick links to apps in sidebar */}
-                    {['Pomodoro', 'Weather', 'Markdown'].map((app, i) => (
+                    {[
+                        { label: 'Reading Tracker', id: 'booktracker' },
+                        { label: 'Pomodoro', id: 'pomodoro' },
+                        { label: 'Weather', id: 'weather' },
+                        { label: 'Markdown', id: 'markdown' },
+                    ].map((app) => (
                         <button
-                            key={app}
-                            onClick={() => navigateTo(`app-${app.toLowerCase()}`)}
+                            key={app.id}
+                            onClick={() => navigateTo(`app-${app.id}`)}
                             className={`
                 w-full flex items-center px-3 py-2 rounded-lg transition-colors text-sm
-                ${activeView === `app-${app.toLowerCase()}`
+                ${activeView === `app-${app.id}`
                                 ? 'bg-slate-800 text-white'
                                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/30'
                             }
               `}
                         >
                             <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-4 opacity-70"></div>
-                            {app}
+                            {app.label}
                         </button>
                     ))}
                 </nav>
