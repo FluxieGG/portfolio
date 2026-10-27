@@ -259,7 +259,7 @@ export default function App() {
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mr-3">
                         <Code size={18} className="text-white" />
                     </div>
-                    <span className="font-bold text-white text-lg tracking-tight">DevBase</span>
+                    <span className="font-bold text-white text-lg tracking-tight">Callum Busuttil</span>
                 </div>
 
                 {/* Nav Links */}
